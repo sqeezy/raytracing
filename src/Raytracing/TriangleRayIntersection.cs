@@ -6,7 +6,7 @@ using static System.Numerics.Vector3;
 namespace Raytracing
 {
     /// <summary>
-    /// https://en.wikipedia.org/wiki/M%C3%B6ller%E2%80%93Trumbore_intersection_algorithm#:~:text=The%20M%C3%B6ller%E2%80%93Trumbore%20ray%2Dtriangle,the%20plane%20containing%20the%20triangle.
+    /// https://en.wikipedia.org/wiki/M%C3%B6ller%E2%80%93Trumbore_intersection_algorithm
     /// </summary>
     public static class TriangleRayIntersection
     {
