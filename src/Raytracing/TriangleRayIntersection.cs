@@ -18,7 +18,8 @@ namespace Raytracing
             Vector3 edge1 = triangle.B - triangle.A;
             Vector3 edge2 = triangle.C - triangle.A;
 
-            Vector3 h = Cross(ray.Direction, edge2);
+            (Vector3 origin, Vector3 direction) = ray;
+            Vector3 h = Cross(direction, edge2);
             float a = Dot(edge1, h);
 
             if (a > -Epsilon && a < Epsilon)
@@ -27,7 +28,7 @@ namespace Raytracing
             }
 
             float f = 1.0f / a;
-            Vector3 s = ray.Origin - triangle.A;
+            Vector3 s = origin - triangle.A;
             float u = f * Dot(s, h);
 
             if (u < 0.0 || u > 1.0)
@@ -36,7 +37,7 @@ namespace Raytracing
             }
 
             Vector3 q = Cross(s, edge1);
-            float v = f * Dot(ray.Direction, q);
+            float v = f * Dot(direction, q);
             if (v < 0.0 || u + v > 1.0)
             {
                 return NoHit;
@@ -46,7 +47,7 @@ namespace Raytracing
 
             if (t > Epsilon)
             {
-                return ray.Origin + ray.Direction * t;
+                return origin + direction * t;
             }
 
             return NoHit;
