@@ -3,18 +3,12 @@ using System.Numerics;
 
 namespace Raytracing
 {
-    public class Triangle
+    public record Triangle(IReadOnlyList<Vector3> Points)
     {
-        private readonly IReadOnlyList<Vector3> _points;
+        public Vector3 A => Points[0];
+        public Vector3 B => Points[1];
+        public Vector3 C => Points[2];
 
-        public Triangle(IReadOnlyList<Vector3> points)
-        {
-            _points = points;
-        }
-
-        public Vector3 A => _points[0];
-        public Vector3 B => _points[1];
-        public Vector3 C => _points[2];
-        public IReadOnlyList<Vector3> Points => _points;
+        public Vector3 Normal => Vector3.Cross(A, B);
     }
 }
